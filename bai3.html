@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiem tra so ngay cua thang</title>
+  </head>
+  <body>
+    <script>
+      let input = "";
+      let monthStr = "";
+      let yearStr = "";
+      do {
+        input = prompt("Nhap vao thang va nam theo dinh dang MM/yyyy:");
+        monthStr = input.substr(0, 2);
+        yearStr = input.substr(3, 4);
+      } while (
+        !(
+          input.length == 7 &&
+          input.charAt(2) == "/" &&
+          monthStr >= "01" &&
+          monthStr <= "12" &&
+          yearStr >= "0000" &&
+          yearStr <= "9999"
+        )
+      );
+
+      let mm = Number(monthStr);
+      let yyyy = Number(yearStr);
+
+      function daysOfMonth(month, year) {
+        let days = 30;
+        switch (month) {
+          case 2:
+            if (year % 4 === 0 && year % 100 != 0) {
+              days = 29;
+            } else if (year % 400 === 0) {
+              days = 29;
+            } else {
+              days = 28;
+            }
+            break;
+
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            days = 31;
+            break;
+
+          default:
+            days = 30;
+        }
+        return days;
+      }
+
+      let result = daysOfMonth(mm, yyyy);
+
+      document.writeln(`So ngay cua thang ${mm} nam ${yyyy} la: ${result}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ham kiem tra so hoan hao</title>
+  </head>
+  <body>
+    <script>
+      let n = null;
+      do {
+        n = parseInt(prompt("Nhap so n de kiem tra:"));
+      } while (isNaN(n));
+
+      function isPerfectNumber(num) {
+        if (num < 2) {
+          return false;
+        }
+
+        let sumOfFactors = 1; // greater than 1 and less than num
+
+        for (let f = 2; f < num; f++) {
+          if (num % f === 0) {
+            sumOfFactors += f;
+          }
+        }
+
+        if (num === sumOfFactors) {
+          return true;
+        }
+        return false;
+      }
+
+      let result = isPerfectNumber(n);
+      document.writeln(
+        `So ${n} ${result ? "la" : "khong phai la"} so hoan hao`
+      );
+    </script>
+  </body>
+</html>

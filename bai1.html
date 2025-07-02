@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung binh cong mang cac so chia het cho 3</title>
+  </head>
+  <body>
+    <script>
+      let n = 0;
+      do {
+        n = parseInt(prompt("Nhap so phan tu cua mang (lon nhat la 50):"));
+      } while (n > 50 || isNaN(n));
+
+      let arr = [];
+      let count = 0;
+      do {
+        let arr_i = parseInt(prompt(`Nhap phan tu thu ${count}: `));
+        arr.push(arr_i);
+        count++;
+      } while (count <= n - 1);
+
+      document.writeln(`Mang da cho la: ${arr}.`);
+
+      document.writeln(
+        "Trung binh cong cac so chia het cho 3 cua mang da cho la:"
+      );
+
+      let counter = 0;
+      let divisibleBy3Sum = 0;
+      for (let i = 0; i < n; i++) {
+        if (arr[i] % 3 === 0) {
+          divisibleBy3Sum += arr[i];
+          counter++;
+        }
+      }
+      let divisibleBy3Avg = divisibleBy3Sum / counter;
+
+      document.writeln(divisibleBy3Avg);
+    </script>
+  </body>
+</html>
